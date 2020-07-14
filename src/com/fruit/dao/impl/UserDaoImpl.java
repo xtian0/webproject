@@ -1,8 +1,8 @@
-package fruit.dao.impl;
+package com.fruit.dao.impl;
 
-import fruit.dao.BaseDao;
-import fruit.dao.UserDao;
-import fruit.pojo.User;
+import com.fruit.dao.BaseDao;
+import com.fruit.dao.UserDao;
+import com.fruit.pojo.User;
 
 /**
  * @author : Xin Tian

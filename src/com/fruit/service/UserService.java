@@ -1,6 +1,6 @@
-package fruit.service;
+package com.fruit.service;
 
-import fruit.pojo.User;
+import com.fruit.pojo.User;
 
 /**
  * @author : Xin Tian

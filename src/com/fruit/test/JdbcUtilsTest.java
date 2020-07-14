@@ -1,6 +1,6 @@
-package fruit.test;
+package com.fruit.test;
 
-import fruit.utils.JdbcUtils;
+import com.fruit.utils.JdbcUtils;
 import org.junit.Test;
 
 import java.sql.Connection;

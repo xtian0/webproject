@@ -1,11 +1,9 @@
-package fruit.test;
+package com.fruit.test;
 
-import fruit.dao.UserDao;
-import fruit.dao.impl.UserDaoImpl;
-import fruit.pojo.User;
+import com.fruit.dao.UserDao;
+import com.fruit.dao.impl.UserDaoImpl;
+import com.fruit.pojo.User;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * @author : Xin Tian

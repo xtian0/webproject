@@ -1,11 +1,9 @@
-package fruit.test;
+package com.fruit.test;
 
-import fruit.pojo.User;
-import fruit.service.UserService;
-import fruit.service.impl.UserServiceImpl;
+import com.fruit.pojo.User;
+import com.fruit.service.UserService;
+import com.fruit.service.impl.UserServiceImpl;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * @author : Xin Tian

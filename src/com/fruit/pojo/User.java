@@ -1,4 +1,4 @@
-package fruit.pojo;
+package com.fruit.pojo;
 
 /**
  * @author : Xin Tian

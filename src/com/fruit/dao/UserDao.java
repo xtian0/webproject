@@ -1,6 +1,6 @@
-package fruit.dao;
+package com.fruit.dao;
 
-import fruit.pojo.User;
+import com.fruit.pojo.User;
 
 /**
  * @author : Xin Tian

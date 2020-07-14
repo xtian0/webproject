@@ -11,6 +11,8 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$
+  Welcome!<br>
+  <a href="pages/user/regist.html" target="_blank">Sign up</a><br>
+  <a href="pages/user/login.html" target="_blank">Sign in</a><br>
   </body>
 </html>

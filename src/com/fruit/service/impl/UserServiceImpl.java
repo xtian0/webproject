@@ -1,9 +1,9 @@
-package fruit.service.impl;
+package com.fruit.service.impl;
 
-import fruit.dao.UserDao;
-import fruit.dao.impl.UserDaoImpl;
-import fruit.pojo.User;
-import fruit.service.UserService;
+import com.fruit.dao.UserDao;
+import com.fruit.pojo.User;
+import com.fruit.service.UserService;
+import com.fruit.dao.impl.UserDaoImpl;
 
 /**
  * @author : Xin Tian
