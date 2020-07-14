@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Registration page</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css">
+    <script type="text/javascript" src="../../static/script/jquery-3.5.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#sub_btn").click(function () {
+                // Verify username: Consist of letters, Numbers, and underscores
+                //                     5-12 digits long
+                //1. Access to text
+                var usernameText = $("#username").val();
+                //2. Reg
+                var usernamePatt = /^\w{5,12}$/;
+                //3. Test
+                if (!usernamePatt.test(usernameText)){
+                    $("span.errorMsg").text("This user name is not valid!");
+                    return false;
+                }
+
+                // Verify password: Consist of letters, Numbers, and underscores
+                //                     5-12 digits long
+                //1. Access to text
+                var passwordText = $("#password").val();
+                //2. Reg
+                var passwordPatt = /^\w{5,12}$/;
+                //3. Test
+                if (!passwordPatt.test(passwordText)){
+                    $("span.errorMsg").text("This password is not valid!");
+                    return false;
+                }
+
+                // Confirm password: equal to password
+                var repwdText = $("#repwd").val();
+                if (passwordText!=repwdText){
+                    $("span.errorMsg").text("Password not match!");
+                    return false;
+                }
+
+                // Verify email address: XXXXX@XXX.com
+                var emailText = $("#email").val();
+                var emailPatt = /^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$/;
+                if (!emailPatt.test(emailText)){
+                    $("span.errorMsg").text("This email address is not valid!");
+                    return false;
+                }
+                // Submit
+                $("span.errorMsg").text(" ");
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <div>
+
+    </div>
+    <div id="content">
+        <div class="regist_form">
+            <div class="regist_box">
+                <div class="title">
+                    <h1>Create account</h1>
+                    <span class="errorMsg"></span>
+                </div>
+                <div class="form">
+                    <form action="regist_success.html">
+                        <label>Your Name:</label>
+                        <input class="itxt" type="text" placeholder="Please enter your name"
+                               autocomplete="off" tabindex="1" name="username" id="username">
+                        <br>
+                        <br>
+                        <label>Password:</label>
+                        <input class="itxt" type="password" placeholder="Please enter your password"
+                               autocomplete="off" tabindex="1" name="password" id="password">
+                        <br>
+                        <br>
+                        <label>Re-enter Password:</label>
+                        <input class="itxt" type="password" placeholder="Please enter your password"
+                               autocomplete="off" tabindex="1" name="repwd" id="repwd">
+                        <br>
+                        <br>
+                        <label>Email:</label>
+                        <input class="itxt" type="text" placeholder="Please enter your email address"
+                               autocomplete="off" tabindex="1" name="email" id="email">
+                        <br>
+                        <br>
+                        <input type="submit" value="Create your account" id="sub_btn">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="login_form">
+            <div class="login_box">
+                <div class="title">
+                    <h1>Sign in</h1>
+                    <span class="errorMsg"></span>
+                </div>
+                <div class="form">
+                    <form action="login_success.html">
+                        <label>Your Name or Email address:</label>
+                        <input class="itxt" type="text" placeholder="Please enter your name"
+                               autocomplete="off" tabindex="1" name="username" id="loginUsername">
+                        <br>
+                        <br>
+                        <label>Password:</label>
+                        <input class="itxt" type="password" placeholder="Please enter your password"
+                               autocomplete="off" tabindex="1" name="password" id="loginPassword">
+                        <br>
+                        <br>
+                        <input type="submit" value="login" id="login_btn">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
