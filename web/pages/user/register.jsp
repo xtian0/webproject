@@ -1,11 +1,20 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Member Registration page</title>
-<!--    <base href="http://localhost:8080/webproject/">-->
-    <base href="http://192.168.0.71:8080/webproject/">
-<!--          http://192.168.0.71-->
+<%--    <base href="http://192.168.0.71:8080/webproject/">--%>
+    <%
+        String basePath = request.getScheme()
+                +"://"
+                +request.getServerName()
+                +":"
+                +request.getServerPort()
+                +request.getContextPath()
+                +"/";
+    %>
+    <base href="<%=basePath%>">
 <!--    <link rel="stylesheet" type="text/css" href="../../static/css/style.css">-->
     <link rel="stylesheet" type="text/css" href="static/css/style.css">
 <!--    <script type="text/javascript" src="../../static/script/jquery-3.5.1.js"></script>-->
@@ -67,13 +76,19 @@
             <div class="regist_box">
                 <div class="title">
                     <h1>Create account</h1>
-                    <span class="errorMsg"></span>
+                    <span class="errorMsg">
+<%--                        <%=request.getAttribute("msg")==null?"":request.getAttribute("msg")%>--%>
+                        ${requestScope.msg?"Please enter your name and password":requestScope.msg}
+                    </span>
                 </div>
                 <div class="form">
-                    <form action="registerServlet" method="post">
+                    <form action="userServlet" method="post">
+                        <input type="hidden" name="action" value="register"/>
                         <label>Your Name:</label>
                         <input class="itxt" type="text" placeholder="Please enter your name"
-                               autocomplete="off" tabindex="1" name="username" id="username">
+                               autocomplete="off" tabindex="1" name="username" id="username"
+<%--                            <%=request.getAttribute("username")==null?"":request.getAttribute("username")%>>--%>
+                            value = "${requestScope.username}">
                         <br>
                         <br>
                         <label>Password:</label>
@@ -88,7 +103,8 @@
                         <br>
                         <label>Email:</label>
                         <input class="itxt" type="text" placeholder="Please enter your email address"
-                               autocomplete="off" tabindex="1" name="email" id="email">
+                               autocomplete="off" tabindex="1" name="email" id="email"
+                               value="${requestScope.email}">
                         <br>
                         <br>
                         <input type="submit" value="Create your account" id="sub_btn">
@@ -105,7 +121,7 @@
 <!--                    <span class="errorMsg"></span>-->
 <!--                </div>-->
 <!--                <div class="form">-->
-<!--                    <form action="login_success.html">-->
+<!--                    <form action="login_success.jsp">-->
 <!--                        <label>Your Name or Email address:</label>-->
 <!--                        <input class="itxt" type="text" placeholder="Please enter your name"-->
 <!--                               autocomplete="off" tabindex="1" name="username" id="loginUsername">-->
