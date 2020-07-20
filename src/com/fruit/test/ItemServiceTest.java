@@ -1,5 +1,6 @@
 package com.fruit.test;
 
+import com.fruit.pojo.Page;
 import com.fruit.service.ItemService;
 import com.fruit.service.impl.ItemServiceImpl;
 import org.junit.Test;
@@ -31,5 +32,13 @@ public class ItemServiceTest {
 
     @Test
     public void queryItems() {
+    }
+    @Test
+    public void page(){
+        System.out.println(itemService.page(1, Page.PAGE_SIZE));
+    }
+    @Test
+    public void pageByPrice(){
+        System.out.println(itemService.pageByPrice(1, Page.PAGE_SIZE,0,10));
     }
 }

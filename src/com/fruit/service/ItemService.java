@@ -16,4 +16,6 @@ public interface ItemService {
     public Item queryItemById(Integer id);
     public List<Item> queryItems();
     public Page<Item> page(Integer pageNo, Integer pageSize);
+
+    Page<Item> pageByPrice(int pageNo, int pageSize, int min, int max);
 }

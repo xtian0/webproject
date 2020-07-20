@@ -81,7 +81,7 @@ public abstract class BaseDao {
             conn = JdbcUtils.getConnection();
 //            String sql = "select count(*) from user";
 //            String sql = "select max(DOB) from user";
-            return queryRunner.query(conn, sql, new ScalarHandler());
+            return queryRunner.query(conn, sql, new ScalarHandler(), args);
 //            Date maxBirth = (Date) runner.query(conn, sql, handler);
         } catch (Exception e) {
             e.printStackTrace();

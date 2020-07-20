@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: pineapple
-  Date: 13/7/20
-  Time: 11:30 pm
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/pages/common/head.jsp"%>
@@ -21,6 +14,21 @@
     <a href="pages/user/register.jsp" target="_blank">Sign up</a><br>
     <a href="pages/user/login.jsp" target="_blank">Sign in</a><br>
     <a href="pages/manager/manager.jsp" target="_blank">Manager login</a><br>
+  </div>
+
+  <div id="price">
+    <form action="client/itemServlet"method="get">
+      <input type="hidden" name="action" value="pageByPrice">
+      Price: $<input id="min" type="text" name="min" value="${param.min}"> -
+              $<input id="max" type="text" name="max" value="${param.max}">
+              <input type="submit" value="Apply">
+<%--      Price:--%>
+<%--      <select> --%>
+<%--        <option id="op1">$0 - $10</option>--%>
+<%--        <option id="op2">$10 - $20</option>--%>
+<%--        <option id="op3">$20 and above</option>--%>
+<%--      </select>--%>
+    </form>
   </div>
 
   <div id="main">

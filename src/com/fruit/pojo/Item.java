@@ -7,7 +7,7 @@ package com.fruit.pojo;
 public class Item {
     private Integer id;
     private String name;
-    private String price;
+    private Double price;
     private String place;
     private Integer sales;
     private Integer stock;
@@ -16,7 +16,7 @@ public class Item {
     public Item() {
     }
 
-    public Item(Integer id, String name, String price, String place, Integer sales, Integer stock, String img_path) {
+    public Item(Integer id, String name, Double price, String place, Integer sales, Integer stock, String img_path) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -46,11 +46,11 @@ public class Item {
         this.name = name;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

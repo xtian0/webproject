@@ -64,4 +64,29 @@ public class ItemServiceImpl implements ItemService {
         page.setItems(items);
         return page;
     }
+
+    @Override
+    public Page<Item> pageByPrice(int pageNo, int pageSize, int min, int max) {
+        Page<Item> page = new Page<Item>();
+
+        page.setPageSize(pageSize);
+
+        Integer pageTotalCount = itemDao.queryForPageTotalCountByPrice(min, max);
+        page.setPageTotalCount(pageTotalCount);
+
+        Integer pageTotal = pageTotalCount / pageSize;
+        if (pageTotalCount % pageSize > 0){
+            pageTotal+=1;
+        }
+
+        pageNo = (pageNo>pageTotal)?pageTotal:pageNo;
+        page.setPageNo(pageNo);
+        page.setPageTotal(pageTotal);
+
+        //当前页的开始索引
+        int begin=(pageNo-1) * pageSize;
+        List<Item> items = itemDao.queryForPageItemsByPrice(begin, pageSize, min, max);
+        page.setItems(items);
+        return page;
+    }
 }

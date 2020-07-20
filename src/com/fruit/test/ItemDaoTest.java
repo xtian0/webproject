@@ -17,7 +17,7 @@ public class ItemDaoTest {
     ItemDao itemDao = new ItemDaoImpl();
     @Test
     public void addItem() {
-        System.out.println(itemDao.addItem(new Item(null, "cherries", "$19.99 per kg",
+        System.out.println(itemDao.addItem(new Item(null, "cherries", 19.99,
                 "New Zealand", 50, 100, "static/img/cherries.jpg")));
     }
 
@@ -28,7 +28,7 @@ public class ItemDaoTest {
 
     @Test
     public void updateItem() {
-        System.out.println(itemDao.updateItem(new Item(12, "cherries", "$19.99 per kg",
+        System.out.println(itemDao.updateItem(new Item(12, "cherries", 19.99,
                 "New Zealand", 50, 105, "static/img/cherries.jpg")));
     }
 
@@ -51,6 +51,19 @@ public class ItemDaoTest {
 
     @Test
     public void queryForPageItems() {
-        System.out.println(itemDao.queryForPageItems(0, 4));
+        System.out.println(itemDao.queryForPageItems(0,4));
+    }
+
+    @Test
+    public void queryForPageTotalCountByPrice() {
+        System.out.println(itemDao.queryForPageTotalCountByPrice(0, 10));
+    }
+
+
+    @Test
+    public void queryForPageItemsByPrice() {
+        for (Item queryItem : itemDao.queryForPageItemsByPrice(10, 4, 0, 10)){
+            System.out.println(queryItem);
+        }
     }
 }

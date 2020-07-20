@@ -20,6 +20,8 @@ public interface ItemDao {
     public List<Item> queryItems();
 
     public Integer queryForPageTotalCount();
+    public Integer queryForPageTotalCountByPrice(int min, int max);
 
-    public List<Item> queryForPageItems(int begin, Integer pageSize);
+    public List<Item> queryForPageItems(int begin, int pageSize);
+    public List<Item> queryForPageItemsByPrice(int begin, int pageSize, int min, int max);
 }
