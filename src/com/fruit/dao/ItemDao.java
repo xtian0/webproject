@@ -2,7 +2,6 @@ package com.fruit.dao;
 
 import com.fruit.pojo.Item;
 
-import java.awt.print.Book;
 import java.util.List;
 
 /**
@@ -19,4 +18,8 @@ public interface ItemDao {
     public Item queryItemById(Integer id);
 
     public List<Item> queryItems();
+
+    public Integer queryForPageTotalCount();
+
+    public List<Item> queryForPageItems(int begin, Integer pageSize);
 }

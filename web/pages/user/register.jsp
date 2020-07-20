@@ -1,24 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="/pages/common/head.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Member Registration page</title>
-<%--    <base href="http://192.168.0.71:8080/webproject/">--%>
-    <%
-        String basePath = request.getScheme()
-                +"://"
-                +request.getServerName()
-                +":"
-                +request.getServerPort()
-                +request.getContextPath()
-                +"/";
-    %>
-    <base href="<%=basePath%>">
-<!--    <link rel="stylesheet" type="text/css" href="../../static/css/style.css">-->
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
-<!--    <script type="text/javascript" src="../../static/script/jquery-3.5.1.js"></script>-->
-    <script type="text/javascript" src="static/script/jquery-3.5.1.js"></script>
+
     <script type="text/javascript">
         $(function () {
             $("#sub_btn").click(function () {

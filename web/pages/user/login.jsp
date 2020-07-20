@@ -1,21 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="/pages/common/head.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-<%--    <base href="http://192.168.0.71:8080/webproject/">--%>
-    <%
-        String basePath = request.getScheme()
-                +"://"
-                +request.getServerName()
-                +":"
-                +request.getServerPort()
-                +request.getContextPath()
-                +"/";
-    %>
-    <base href="<%=basePath%>">
-    <script type="text/javascript" src="static/script/jquery-3.5.1.js"></script>
 
 </head>
 <body>
@@ -24,7 +13,7 @@
             <div class="login_box">
                 <div class="title">
                     <h1>Sign in</h1>
-                    <a href="register.jsp" align="right">Sign up</a>
+                    <a href="pages/user/register.jsp">Sign up</a>
                     <span class="errorMsg">
 <%--                        <%=request.getAttribute("msg")==null?"":request.getAttribute("msg")%>--%>
                         ${requestScope.msg}

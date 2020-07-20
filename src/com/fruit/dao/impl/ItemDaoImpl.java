@@ -41,4 +41,17 @@ public class ItemDaoImpl extends BaseDao implements ItemDao {
         String sql = "select id, name, price, place, sales, stock, img_path from item";
         return queryForlist(Item.class, sql);
     }
+
+    @Override
+    public Integer queryForPageTotalCount() {
+        String sql = "select count(*) from item";
+        Number count = (Number) queryForSingleValue(sql);
+        return count.intValue();
+    }
+
+    @Override
+    public List<Item> queryForPageItems(int begin, Integer pageSize) {
+        String sql = "select id, name, price, place, sales, stock, img_path from item limit ?,?";
+        return queryForlist(Item.class,sql, begin, pageSize);
+    }
 }

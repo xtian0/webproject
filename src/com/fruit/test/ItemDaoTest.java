@@ -5,6 +5,8 @@ import com.fruit.dao.impl.ItemDaoImpl;
 import com.fruit.pojo.Item;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -40,5 +42,15 @@ public class ItemDaoTest {
         for (Item queryItem : itemDao.queryItems()){
             System.out.println(queryItem);
         }
+    }
+
+    @Test
+    public void queryForPageTotalCount() {
+        System.out.println(itemDao.queryForPageTotalCount());
+    }
+
+    @Test
+    public void queryForPageItems() {
+        System.out.println(itemDao.queryForPageItems(0, 4));
     }
 }

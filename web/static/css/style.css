@@ -1,77 +1,12 @@
-/*body {*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*    font-family: 'Vollkorn', serif;*/
-/*    background: url("../img/banner.jpg") no-repeat;*/
-/*    background-size: 100% 100%;*/
-/*}*/
-
-/*.login_box {*/
-/*    position: relative;*/
-/*    top: 0;*/
-/*    opacity: 1;*/
-/*    float: left;*/
-/*    padding: 60px 50px 40px 50px;*/
-/*    width: 100%;*/
-/*    background: #fff;*/
-/*    border-radius: 10px;*/
-/*    transform: scale(1);*/
-/*    -webkit-transform: scale(1);*/
-/*    -ms-transform: scale(1);*/
-/*    z-index: 5;*/
-/*}*/
-
-
-/*.login_box:before {*/
-/*    content: "";*/
-/*    width: 100%;*/
-/*    height: 30px;*/
-/*    border-radius: 10px;*/
-/*    position: absolute;*/
-/*    top: -10px;*/
-/*    background: rgba(255, 255, 255, .6);*/
-/*    left: 0;*/
-/*    transform: scale(.95);*/
-/*    -webkit-transform: scale(.95);*/
-/*    -ms-transform: scale(.95);*/
-/*    z-index: -1;*/
-/*}*/
-
-/*.regist_box.h1 {*/
-/*    color: #fff;*/
-/*}*/
-
-/*.regist_box.h1:before {*/
-/*    background: #fff;*/
-/*}*/
-/*h1 {*/
-/*    width: 100%;*/
-/*    float: left;*/
-/*    line-height: 46px;*/
-/*    font-size: 34px;*/
-/*    font-weight: 700;*/
-/*    letter-spacing: 2px;*/
-/*    color: black;*/
-/*    position: relative;*/
-/*}*/
-
-/*h1:before {*/
-/*    content: "";*/
-/*    width: 5px;*/
-/*    height: 100%;*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    left: -50px;*/
-/*    background: black;*/
-/*}*/
-/*.login_box {*/
-/*    transition: 400ms cubic-bezier(.4, 0, .2, 1);*/
-/*    -webkit-transition: 400ms cubic-bezier(.4, 0, .2, 1);*/
-/*    -ms-transition: 400ms cubic-bezier(.4, 0, .2, 1);*/
-/*}*/
-
-
-
 span.errorMsg {
     color: red;
+}
+
+
+#page_nav{
+    text-align: center;
+}
+
+.item_list{
+    display: inline-block;
 }

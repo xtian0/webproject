@@ -4,23 +4,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-<!--    <servlet>-->
-<!--        <servlet-name>RegisterServlet</servlet-name>-->
-<!--        <servlet-class>com.fruit.web.RegisterServlet</servlet-class>-->
-<!--    </servlet>-->
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>RegisterServlet</servlet-name>-->
-<!--        <url-pattern>/registerServlet</url-pattern>-->
-<!--    </servlet-mapping>-->
 
-<!--    <servlet>-->
-<!--        <servlet-name>LoginServlet</servlet-name>-->
-<!--        <servlet-class>com.fruit.web.LoginServlet</servlet-class>-->
-<!--    </servlet>-->
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>LoginServlet</servlet-name>-->
-<!--        <url-pattern>/loginServlet</url-pattern>-->
-<!--    </servlet-mapping>-->
 
     <servlet>
         <servlet-name>UserServlet</servlet-name>
@@ -29,6 +13,24 @@
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/userServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ItemServlet</servlet-name>
+        <servlet-class>com.fruit.web.ItemServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ItemServlet</servlet-name>
+        <url-pattern>/manager/itemServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ClientItemServlet</servlet-name>
+        <servlet-class>com.fruit.web.ClientItemServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClientItemServlet</servlet-name>
+        <url-pattern>/client/itemServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>

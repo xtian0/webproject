@@ -1,6 +1,7 @@
 package com.fruit.service;
 
 import com.fruit.pojo.Item;
+import com.fruit.pojo.Page;
 
 import java.util.List;
 
@@ -14,4 +15,5 @@ public interface ItemService {
     public int updateItem(Item item);
     public Item queryItemById(Integer id);
     public List<Item> queryItems();
+    public Page<Item> page(Integer pageNo, Integer pageSize);
 }
