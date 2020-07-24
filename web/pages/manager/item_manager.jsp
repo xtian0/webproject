@@ -6,13 +6,14 @@
 <html>
 <head>
     <title>Item Management</title>
-<%--    <script type="text/javascript">--%>
-<%--        $(function(){--%>
-<%--            $("a.deleteClass").click(function () {--%>
-<%--                return confirm("Are you sure to delete [" + $(this).parent().parent().find("td:first").text() + "]?");--%>
-<%--            });--%>
-<%--        });--%>
-<%--    </script>--%>
+    <script type="text/javascript">
+        $(function(){
+            $("a.deleteClass").click(function () {
+                return confirm("Are you sure to delete [" + $(this).parent().parent().find("td:first").text() + "]?");
+            });
+        });
+    </script>
+
 
 </head>
 <body>
@@ -35,9 +36,7 @@
                 <td>${item.sales}</td>
                 <td>${item.stock}</td>
                 <td><a href="manager/itemServlet?action=getItem&id=${item.id}&pageNo=${requestScope.page.pageNo}">Update</a></td>
-                <td><a class="deleteClass" href="manager/itemServlet?action=delete&id=${item.id}&pageNo=${requestScope.page.pageNo}"
-                       onclick="var toDelete = (confirm('Are you sure to delete'+'${item.name}'+'?')); return toDelete ">Delete</a></td>
-<%--                <td><a class="deleteClass" href="manager/itemServlet?action=delete&id=${item.id}">Delete</a> </td>--%>
+                <td><a class="deleteClass" href="manager/itemServlet?action=delete&id=${item.id}&pageNo=${requestScope.page.pageNo}">Delete</a> </td>
             </tr>
         </c:forEach>
             <tr>

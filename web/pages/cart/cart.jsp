@@ -1,17 +1,76 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: pineapple
-  Date: 17/7/20
-  Time: 6:37 pm
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Cart</title>
+    <script type="text/javascript">
+        $(function () {
+            // 给 【删除】绑定单击事件
+            $("a.deleteItem").click(function () {
+                confirm("gggg")
+                return confirm("Are you sure to delete【" + $(this).parent().parent().find("td:first").text() +"】?")
+            });
+            // 给清空购物车绑定单击事件
+            $("#clearCart").click(function () {
+                return confirm("Are you sure to clean the cart?");
+            })
+            // 给输入框绑定 onchange内容发生改变事件
+            $(".updateCount").change(function () {
+                // 获取商品名称
+                var name = $(this).parent().parent().find("td:first").text();
+                var id = $(this).attr('bookId');
+                // 获取商品数量
+                var count = this.value;
+                if ( confirm("你确定要将【" + name + "】商品修改数量为：" + count + " 吗?") ) {
+                    //发起请求。给服务器保存修改
+                    location.href = "http://localhost:8080/book/cartServlet?action=updateCount&count="+count+"&id="+id;
+                } else {
+                    // defaultValue属性是表单项Dom对象的属性。它表示默认的value属性值。
+                    this.value = this.defaultValue;
+                }
+            });
+        });
+
+
+    </script>
 </head>
 <body>
     <%@ include file="/pages/common/login_success_menu.jsp"%>
-    This is your cart!
+
+    <div id="main">
+        <c:if test="${empty sessionScope.cart.items}">
+            <span>Your cart is empty! <a href="index.jsp">Go to shopping</a> </span>
+        </c:if>
+        <c:if test="${not empty sessionScope.cart.items}">
+            <div id="cart_content">
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Count</th>
+                        <th>Price</th>
+                        <th>Total Price</th>
+                        <th>Operation</th>
+                    </tr>
+                    <c:forEach items="${sessionScope.cart.items}" var="item">
+                        <tr>
+                            <td>${item.value.name}</td>
+                            <td><input type="text" class="count" value="${item.value.count}" style="width: 30px"></td>
+                            <td>${item.value.price}</td>
+                            <td>${item.value.totalPrice}</td>
+                            <td><a class="deleteItem" href="cartServlet?action=deleteItem&id=${item.value.id}">Delete</a></td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </div>
+            <div id="cart_info">
+                <span class="cart_span">${sessionScope.cart.totalCount} items in cart</span><br>
+                <span class="cart_span">Total: $${sessionScope.cart.totalPrice}</span><br>
+                <span class="cart_span"><a id="cleanCart" href="cartServlet?action=clean">Clean Cart</a></span><br>
+                <span class="cart_span"><a href="#">Checkout</a></span>
+            </div>
+        </c:if>
+
+
+    </div>
 </body>
 </html>

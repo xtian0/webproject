@@ -4,16 +4,14 @@ import com.fruit.pojo.User;
 import com.fruit.service.UserService;
 import com.fruit.service.impl.UserServiceImpl;
 import com.fruit.utils.WebUtils;
-import com.sun.xml.internal.rngom.parse.host.Base;
-import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+
+
+import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
 
 /**
  * @author : Xin Tian
@@ -29,9 +27,9 @@ public class UserServlet extends BaseServlet {
 
         if (userService.login(new User(null, user.getUsername(), user.getPassword(), null)) != null){
             //Login success
+            req.getSession().setAttribute("user", user);
             req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
         } else {
-
             //Go back to login page
             req.setAttribute("msg","Incorrect user name or password");
             req.setAttribute("username",user.getUsername());
@@ -39,29 +37,54 @@ public class UserServlet extends BaseServlet {
 
         }
     }
+
+    protected void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getSession().invalidate();
+        resp.sendRedirect(req.getContextPath());
+    }
+
     protected void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        获取session中的验证码
+        String token = (String) req.getSession().getAttribute(KAPTCHA_SESSION_KEY);
+//        删除session中的验证码
+        req.getSession().removeAttribute(KAPTCHA_SESSION_KEY);
+
+
 //        1.获取请求参数
-//        String username = req.getParameter("username");
-//        String password = req.getParameter("password");
-//        String email = req.getParameter("email");
-        User user = WebUtils.copyParaToBean(req.getParameterMap(), new User());
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        String email = req.getParameter("email");
+        String code = req.getParameter("code");
+//        User user = WebUtils.copyParaToBean(req.getParameterMap(), new User());
+//        检查验证码是否正确
+        if (token != null && token.equalsIgnoreCase(code)){
+            //        2. 检查用户名是否可用
+            if (userService.existsUsername(username)){
+                System.out.println("username " + username + " is not valid");
+                //go back to register page with echo information
+                req.setAttribute("msg","Username is not valid!!");
+                req.setAttribute("username",username);
+                req.setAttribute("email",email);
+                req.getRequestDispatcher("/pages/user/register.jsp").forward(req, resp);
+            } else {
+                //save to the database
+                userService.register(new User(null, username, password, email));
 
-//        2. 检查用户名是否可用
-        if (userService.existsUsername(user.getUsername())){
-            System.out.println("username " + user.getUsername() + " is not valid");
-            //go back to register page with echo information
-            req.setAttribute("msg","Username is not valid!!");
-            req.setAttribute("username",user.getUsername());
-            req.setAttribute("email",user.getEmail());
-            req.getRequestDispatcher("/pages/user/register.jsp").forward(req, resp);
+                //go to register success page
+                req.getRequestDispatcher("/pages/user/register_success.jsp").forward(req, resp);
+
+            }
         } else {
-            //save to the database
-            userService.register(new User(null, user.getUsername(), user.getPassword(), user.getEmail()));
+            // 把回显信息，保存到Request域中
+            req.setAttribute("msg", "Incorrect verify code！！");
+            req.setAttribute("username", username);
+            req.setAttribute("email", email);
 
-            //go to register success page
-            req.getRequestDispatcher("/pages/user/register_success.jsp").forward(req, resp);
-
+            System.out.println("验证码[" + code + "]错误");
+            req.getRequestDispatcher("/pages/user/register.jsp").forward(req, resp);
         }
+
+
     }
 
 }

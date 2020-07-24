@@ -5,6 +5,7 @@ import com.fruit.dao.impl.ItemDaoImpl;
 import com.fruit.pojo.Item;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -17,7 +18,7 @@ public class ItemDaoTest {
     ItemDao itemDao = new ItemDaoImpl();
     @Test
     public void addItem() {
-        System.out.println(itemDao.addItem(new Item(null, "cherries", 19.99,
+        System.out.println(itemDao.addItem(new Item(null, "cherries", new BigDecimal(19.99),
                 "New Zealand", 50, 100, "static/img/cherries.jpg")));
     }
 
@@ -28,7 +29,7 @@ public class ItemDaoTest {
 
     @Test
     public void updateItem() {
-        System.out.println(itemDao.updateItem(new Item(12, "cherries", 19.99,
+        System.out.println(itemDao.updateItem(new Item(12, "cherries", new BigDecimal(19.99),
                 "New Zealand", 50, 105, "static/img/cherries.jpg")));
     }
 

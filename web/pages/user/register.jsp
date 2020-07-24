@@ -8,6 +8,10 @@
 
     <script type="text/javascript">
         $(function () {
+            $("#code_img").click(function () {
+                this.src = "${basePath}kaptcha.jpg";
+            });
+
             $("#sub_btn").click(function () {
                 // Verify username: Consist of letters, Numbers, and underscores
                 //                     5-12 digits long
@@ -94,36 +98,17 @@
                                value="${requestScope.email}">
                         <br>
                         <br>
+                        <label>Verify:</label>
+                        <input class="itxt" type="text" name="code" id="code">
+                        <img id="code_img" src="kaptcha.jpg" style=" width: 110px; height: 30px">
+                        <br>
+                        <br>
                         <input type="submit" value="Create your account" id="sub_btn">
 
                     </form>
                 </div>
             </div>
         </div>
-
-<!--        <div class="login_form">-->
-<!--            <div class="login_box">-->
-<!--                <div class="title">-->
-<!--                    <h1>Sign in</h1>-->
-<!--                    <span class="errorMsg"></span>-->
-<!--                </div>-->
-<!--                <div class="form">-->
-<!--                    <form action="login_success.jsp">-->
-<!--                        <label>Your Name or Email address:</label>-->
-<!--                        <input class="itxt" type="text" placeholder="Please enter your name"-->
-<!--                               autocomplete="off" tabindex="1" name="username" id="loginUsername">-->
-<!--                        <br>-->
-<!--                        <br>-->
-<!--                        <label>Password:</label>-->
-<!--                        <input class="itxt" type="password" placeholder="Please enter your password"-->
-<!--                               autocomplete="off" tabindex="1" name="password" id="loginPassword">-->
-<!--                        <br>-->
-<!--                        <br>-->
-<!--                        <input type="submit" value="login" id="login_btn">-->
-<!--                    </form>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
     </div>
 
 </body>

@@ -1,5 +1,7 @@
 package com.fruit.pojo;
 
+import java.math.BigDecimal;
+
 /**
  * @author : Xin Tian
  * @date : 10:40 pm 18/7/20
@@ -7,7 +9,7 @@ package com.fruit.pojo;
 public class Item {
     private Integer id;
     private String name;
-    private Double price;
+    private BigDecimal price;
     private String place;
     private Integer sales;
     private Integer stock;
@@ -16,7 +18,7 @@ public class Item {
     public Item() {
     }
 
-    public Item(Integer id, String name, Double price, String place, Integer sales, Integer stock, String img_path) {
+    public Item(Integer id, String name, BigDecimal price, String place, Integer sales, Integer stock, String img_path) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -46,11 +48,11 @@ public class Item {
         this.name = name;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

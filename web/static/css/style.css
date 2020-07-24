@@ -1,3 +1,17 @@
+body{
+    background-color: antiquewhite;
+}
+#main{
+    background-color: white;
+    width: 900px;
+    alignment: center;
+}
+
+div.item_list{
+    width: 200px;
+    height: 350px;
+}
+
 span.errorMsg {
     color: red;
 }
@@ -7,6 +21,15 @@ span.errorMsg {
     text-align: center;
 }
 
-.item_list{
-    display: inline-block;
+#min,#max{
+    width: 1px;
 }
+
+label{
+    display:inline-block;
+    width:200px;
+    text-align:right;
+}
+
+
+
