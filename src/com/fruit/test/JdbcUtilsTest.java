@@ -12,15 +12,15 @@ import java.sql.SQLException;
  */
 public class JdbcUtilsTest {
 
-    @Test
-    public void testJdbcUtils(){
-        Connection conn = null;
-        try {
-            conn = JdbcUtils.getConnection();
-            System.out.println(conn);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        JdbcUtils.close(conn);
-    }
+//    @Test
+//    public void testJdbcUtils(){
+//        Connection conn = null;
+//        try {
+//            conn = JdbcUtils.getConnection();
+//            System.out.println(conn);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        JdbcUtils.close(conn);
+//    }
 }

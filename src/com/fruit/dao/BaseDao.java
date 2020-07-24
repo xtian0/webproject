@@ -31,9 +31,10 @@ public abstract class BaseDao {
             return queryRunner.update(conn, sql,args);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            JdbcUtils.close(conn);
         }
+//        finally {
+//            JdbcUtils.close(conn);  //不能关连接，否则后面service，web操作不能执行
+//        }
         //If failed, return -1.
         return -1;
     }
@@ -53,11 +54,12 @@ public abstract class BaseDao {
             return queryRunner.query(conn, sql, new BeanHandler<T>(type), args);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            JdbcUtils.close(conn);
+            throw new RuntimeException(e);  //抛出异常，后期操作捕获到就rollback
         }
-        //If failed, return null.
-        return null;
+//        finally {
+//            JdbcUtils.close(conn);    //不能关连接，否则后面service，web操作不能执行
+//        }
+
     }
 
     public <T> List<T> queryForlist(Class<T> type, String sql, Object...args){
@@ -67,11 +69,12 @@ public abstract class BaseDao {
             return queryRunner.query(conn, sql, new BeanListHandler<T>(type), args);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            JdbcUtils.close(conn);
+            throw new RuntimeException(e);  //抛出异常，后期操作捕获到就rollback
         }
-        //If failed, return null.
-        return null;
+//        finally {
+//            JdbcUtils.close(conn);    //不能关连接，否则后面service，web操作不能执行
+//        }
+
 
     }
 
@@ -85,10 +88,11 @@ public abstract class BaseDao {
 //            Date maxBirth = (Date) runner.query(conn, sql, handler);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            JdbcUtils.close(conn);
+            throw new RuntimeException(e);  //抛出异常，后期操作捕获到就rollback
         }
-        return null;
+//        finally {
+//            JdbcUtils.close(conn);    //不能关连接，否则后面service，web操作不能执行
+//        }
     }
 
 }

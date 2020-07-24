@@ -54,6 +54,12 @@ public class CartServlet extends BaseServlet {
     }
 
     protected void updateCount(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        Cart cart = (Cart) req.getSession().getAttribute("cart");
+        if (cart != null) {
+            Integer count = WebUtils.parseInt(req.getParameter("count"),1);
+            Integer id = WebUtils.parseInt(req.getParameter("id"),0);
+            cart.updateCount(id, count);
+            resp.sendRedirect(req.getHeader("Referer"));
+        }
     }
 }

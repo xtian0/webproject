@@ -24,11 +24,17 @@ public class UserServlet extends BaseServlet {
 //        String username = req.getParameter("username");
 //        String password = req.getParameter("password");
         User user = WebUtils.copyParaToBean(req.getParameterMap(), new User());
-
-        if (userService.login(new User(null, user.getUsername(), user.getPassword(), null)) != null){
+        User loginUser = userService.login(new User(null, user.getUsername(), user.getPassword(), null));
+        if (loginUser != null){
             //Login success
-            req.getSession().setAttribute("user", user);
-            req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
+            //save user to session
+            req.getSession().setAttribute("user", loginUser);
+            if (loginUser.getUsername().equals("admin")){
+                req.getRequestDispatcher("/pages/manager/manager.jsp").forward(req, resp);
+            } else{
+                req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
+            }
+
         } else {
             //Go back to login page
             req.setAttribute("msg","Incorrect user name or password");

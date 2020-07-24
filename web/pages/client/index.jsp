@@ -4,7 +4,6 @@
 <html>
   <head>
     <title>index</title>
-<%--    静态包含base标签，css样式，jQuery文件--%>
 
     <script type="text/javascript">
         $(function () {
@@ -35,8 +34,9 @@
       <a href="pages/order/order.jsp">Order</a>
       <a href="userServlet?action=logout">Logout</a>
     </c:if>
-    <a href="pages/cart/cart.jsp">Cart</a>
-    <a href="pages/manager/manager.jsp">Manager login</a>
+
+    <a href="pages/cart/cart.jsp">Cart ${sessionScope.cart.totalCount}</a>
+<%--    <a href="pages/manager/manager.jsp">Manager login</a>--%>
   </div>
 
   <div id="price" align="center">
@@ -57,7 +57,6 @@
   <div id="main">
     <table>
       <tr>
-
         <c:forEach items="${requestScope.page.items}" var="item">
         <td>
           <div class="item_list">

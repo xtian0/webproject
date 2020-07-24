@@ -25,7 +25,7 @@
                 <div class="form">
                     <form action="userServlet" method="post">
                         <input type="hidden" name="action" value="login"/>
-                        <label>Your Name or Email address:</label>
+                        <label>Username:</label>
                         <input class="itxt" type="text" placeholder="Please enter your name"
                                autocomplete="off" tabindex="1" name="username" id="loginUsername"
                                value="${requestScope.username}">
