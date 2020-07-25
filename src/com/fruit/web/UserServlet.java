@@ -4,11 +4,14 @@ import com.fruit.pojo.User;
 import com.fruit.service.UserService;
 import com.fruit.service.impl.UserServiceImpl;
 import com.fruit.utils.WebUtils;
+import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
@@ -91,6 +94,16 @@ public class UserServlet extends BaseServlet {
         }
 
 
+    }
+
+    protected void ajaxExistsUsername(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String username = req.getParameter("username");
+        boolean existsUsername = userService.existsUsername(username);
+        Map<String,Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("existsUsername", existsUsername);
+        Gson gson = new Gson();
+        String json = gson.toJson(resultMap);
+        resp.getWriter().write(json);
     }
 
 }

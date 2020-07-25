@@ -14,8 +14,10 @@
                  * @type {jQuery}
                  */
                 var itemId = $(this).attr("itemId");
-                location.href = "${basePath}cartServlet?action=addItem&id=" + itemId;
-
+                <%--location.href = "${basePath}cartServlet?action=addItem&id=" + itemId;--%>
+                $.getJSON("${basePath}cartServlet", "action=ajaxAddItem&id=" + itemId, function (data) {
+                  $("#cartTotalCount").text(data.totalCount);
+                })
             });
         });
     </script>
@@ -35,7 +37,7 @@
       <a href="userServlet?action=logout">Logout</a>
     </c:if>
 
-    <a href="pages/cart/cart.jsp">Cart ${sessionScope.cart.totalCount}</a>
+    <a href="pages/cart/cart.jsp">Cart <span id="cartTotalCount"></span></a>
 <%--    <a href="pages/manager/manager.jsp">Manager login</a>--%>
   </div>
 

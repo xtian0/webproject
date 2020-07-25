@@ -8,6 +8,20 @@
 
     <script type="text/javascript">
         $(function () {
+            $("#username").blur(function () {
+                var username = this.value;
+
+                $.getJSON("${basePath}userServlet", "action=ajaxExistsUsername&username="+username, function (data) {
+                    if (data.existsUsername){
+                        $("span.errorMsg").text("This username already exists!");
+                    }
+                    else {
+                        $("span.errorMsg").text("");
+                    }
+                });
+            });
+
+
             $("#code_img").click(function () {
                 this.src = "${basePath}kaptcha.jpg";
             });
@@ -78,7 +92,6 @@
                         <label>Your Name:</label>
                         <input class="itxt" type="text" placeholder="Please enter your name"
                                autocomplete="off" tabindex="1" name="username" id="username"
-<%--                            <%=request.getAttribute("username")==null?"":request.getAttribute("username")%>>--%>
                             value = "${requestScope.username}">
                         <br>
                         <br>
