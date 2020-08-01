@@ -1,0 +1,33 @@
+body{
+    background-color: antiquewhite;
+}
+#main{
+
+}
+
+div.item_list{
+    width: 200px;
+    height: 350px;
+}
+
+span.errorMsg {
+    color: red;
+}
+
+
+#page_nav{
+    text-align: center;
+}
+
+#min,#max{
+    width: 1px;
+}
+
+label{
+    display:inline-block;
+    width:200px;
+    text-align:right;
+}
+
+
+
